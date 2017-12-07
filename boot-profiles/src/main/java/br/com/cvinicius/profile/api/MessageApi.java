@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.cvinicius.profile.service.Message;
 
 @RestController
-public class MessageApi {
+public class MessageApi{
 
 	@Autowired
 	private Message message;
