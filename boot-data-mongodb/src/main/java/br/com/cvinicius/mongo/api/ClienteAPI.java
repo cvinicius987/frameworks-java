@@ -1,7 +1,7 @@
 package br.com.cvinicius.mongo.api;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,14 +31,9 @@ public class ClienteAPI {
 	@GetMapping(path="/{cnpj}")
 	public ResponseEntity<Cliente> view(@PathVariable String cnpj){
 		
-		Cliente cliente = repository.findOne(cnpj);
+		Optional<Cliente> cliente = repository.findById(cnpj);
 		
-		if(Objects.isNull(cliente)){
-			
-			return ResponseEntity.noContent().build();
-		}
-		else{
-			return ResponseEntity.ok(cliente);
-		}
+		return cliente.map(cli -> ResponseEntity.ok(cli))
+					  .orElse(ResponseEntity.noContent().build());
 	}
 }
