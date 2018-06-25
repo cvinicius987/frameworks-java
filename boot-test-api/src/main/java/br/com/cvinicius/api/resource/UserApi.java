@@ -52,8 +52,10 @@ public class UserApi {
 	}
 	
 	@DeleteMapping("/users/{id}")
-	public void deleteUser(@PathVariable Integer id) {
+	public ResponseEntity<?> deleteUser(@PathVariable Integer id){
 		
 		this.userRepository.deleteById(id);
+		
+		return ResponseEntity.ok().build();
 	}
 }
