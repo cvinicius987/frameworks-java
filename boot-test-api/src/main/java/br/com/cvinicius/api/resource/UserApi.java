@@ -26,13 +26,13 @@ public class UserApi {
 	@GetMapping("/users")
 	public ResponseEntity<List<User>> getAll(){
 		
-		return ResponseEntity.ok(userRepository.findAll());
+		return ResponseEntity.ok(this.userRepository.findAll());
 	}
 	
 	@GetMapping("/users/{id}")
 	public ResponseEntity<User> getOne(@PathVariable Integer id){
 		
-		Optional<User> user = userRepository.findById(id);
+		Optional<User> user = this.userRepository.findById(id);
 		
 		return user.map(u -> ResponseEntity.ok(u))
 				   .orElse(ResponseEntity.notFound().build());
@@ -54,6 +54,6 @@ public class UserApi {
 	@DeleteMapping("/users/{id}")
 	public void deleteUser(@PathVariable Integer id) {
 		
-		userRepository.deleteById(id);
+		this.userRepository.deleteById(id);
 	}
 }
