@@ -100,6 +100,21 @@ public class UserApiTest {
 	}
 	
 	@Test
+	public void update_200OkTest() 
+	throws Exception{
+		
+		String userJson = "{\"name\":\"Caio\", \"address\":\"Rua\"}";
+		User userParam  = new User(1, "Caio", "Rua");
+		
+		when(userRepository.save(userParam)).thenReturn(new User(1, "Caio", "Rua"));
+				
+	    mockMvc.perform(put("/users/1")
+	    					.contentType(MediaType.APPLICATION_JSON)
+	    					.content(userJson))
+	            .andExpect(status().isOk());
+	}
+	
+	@Test
 	public void delete_200Test() 
 	throws Exception{
 				

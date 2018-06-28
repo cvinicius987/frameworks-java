@@ -40,19 +40,16 @@ public class UserApiIntegrationTest {
 		
 	    ResponseEntity<String> response = this.restTemplate.getForEntity("/users", String.class);
 		
-		String body = response.getBody();
-		
 		assertThat(response.getStatusCode(), is(HttpStatus.OK));
 		assertThat(response.getHeaders().getContentType(), equalTo(MediaType.APPLICATION_JSON_UTF8));
-		assertThat(body, isJson(withJsonPath("$.[0].name", equalTo("João"))));
 	}
 	
 	@Test
 	public void getOneAsJson_200OkTest() 
 	throws Exception{
 		
+		//Parametros
 		Map<String, String> params = new HashMap<>();
-		
 	    params.put("id", "1");
 	    		
 	    ResponseEntity<String> response = this.restTemplate.getForEntity("/users/{id}", String.class, params);
@@ -68,8 +65,8 @@ public class UserApiIntegrationTest {
 	public void getOneAsJson_404NotFoundTest() 
 	throws Exception{
 		
+		//Parametros
 		Map<String, String> params = new HashMap<>();
-		
 	    params.put("id", "20");
 	    		
 	    ResponseEntity<String> response = this.restTemplate.getForEntity("/users/{id}", String.class, params);
@@ -81,10 +78,11 @@ public class UserApiIntegrationTest {
 	public void save_201CreatedTest() 
 	throws Exception{
 		
+		//Body
 		String userJson = "{\"name\":\"Caio\", \"address\":\"Avenida Paulista\"}";
 		
+		//Headers
 		HttpHeaders headers = new HttpHeaders();
-		
 		headers.setContentType(MediaType.APPLICATION_JSON);
 
 		HttpEntity<String> entity = new HttpEntity<String>(userJson, headers);
@@ -96,12 +94,37 @@ public class UserApiIntegrationTest {
 	}
 	
 	@Test
+	public void update_200OkTest() 
+	throws Exception{
+		
+		//Body
+		String userJson = "{\"name\":\"Caio\", \"address\":\"Rua\"}";
+		
+		//Headers
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		//Parametros
+		Map<String, String> params = new HashMap<>();
+	    params.put("id", "1");
+
+		HttpEntity<String> entity = new HttpEntity<String>(userJson, headers);
+		
+		ResponseEntity<String> response = this.restTemplate.exchange("/users/{id}", HttpMethod.PUT, entity, String.class, params);
+	    		
+		String body = response.getBody();
+		
+	    assertThat(response.getStatusCode(), is(HttpStatus.OK));
+	    assertThat(body, isJson(withJsonPath("$.address", equalTo("Rua"))));
+	}
+	
+	@Test
 	public void delete_200Test() 
 	throws Exception{
-				
+			
+		//Parametros
 		Map<String, String> params = new HashMap<>();
-		
-	    params.put("id", "1");
+	    params.put("id", "2");
 	
 		HttpEntity<String> entity = new HttpEntity<String>(new HttpHeaders());
 		
