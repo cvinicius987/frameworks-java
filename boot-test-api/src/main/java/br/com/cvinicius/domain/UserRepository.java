@@ -1,4 +1,4 @@
-package br.com.cvinicius.api.domain;
+package br.com.cvinicius.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package br.com.cvinicius.api.resource;
+package br.com.cvinicius.api;
 
 import java.net.URI;
 import java.util.List;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.cvinicius.api.domain.User;
-import br.com.cvinicius.api.domain.UserRepository;
+import br.com.cvinicius.domain.User;
+import br.com.cvinicius.domain.UserRepository;
 
 @RestController
 public class UserApi {

@@ -1,4 +1,4 @@
-package br.com.cvinicius.api.resource;
+package br.com.cvinicius.api;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.mockito.Mockito.when;
@@ -20,8 +20,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import br.com.cvinicius.api.domain.User;
-import br.com.cvinicius.api.domain.UserRepository;
+import br.com.cvinicius.api.UserApi;
+import br.com.cvinicius.domain.User;
+import br.com.cvinicius.domain.UserRepository;
 
 public class UserApiTest {
 

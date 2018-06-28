@@ -1,4 +1,4 @@
-package br.com.cvinicius.api;
+package br.com.cvinicius;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
