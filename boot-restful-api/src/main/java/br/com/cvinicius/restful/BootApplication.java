@@ -1,4 +1,4 @@
-package br.com.cvinicius;
+package br.com.cvinicius.restful;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

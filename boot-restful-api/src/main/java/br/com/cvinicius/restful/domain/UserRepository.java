@@ -1,4 +1,4 @@
-package br.com.cvinicius.domain;
+package br.com.cvinicius.restful.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

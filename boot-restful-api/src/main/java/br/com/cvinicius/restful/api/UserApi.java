@@ -1,4 +1,4 @@
-package br.com.cvinicius.api;
+package br.com.cvinicius.restful.api;
 
 import java.net.URI;
 import java.util.List;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.cvinicius.domain.User;
-import br.com.cvinicius.domain.UserRepository;
+import br.com.cvinicius.restful.domain.User;
+import br.com.cvinicius.restful.domain.UserRepository;
 
 @RestController
 public class UserApi {
@@ -31,7 +31,7 @@ public class UserApi {
 	}
 	
 	@GetMapping("/users/{id}")
-	public ResponseEntity<User> getOne(@PathVariable Integer id){
+	public ResponseEntity<User> getById(@PathVariable Integer id){
 		
 		Optional<User> user = this.userRepository.findById(id);
 		
@@ -40,7 +40,7 @@ public class UserApi {
 	}
 	
 	@PutMapping("/users/{id}")
-	public ResponseEntity<?> merge(@PathVariable Integer id, @RequestBody User user){
+	public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody User user){
 		
 		user.setId(id);
 		

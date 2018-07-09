@@ -1,4 +1,4 @@
-package br.com.cvinicius.domain;
+package br.com.cvinicius.restful.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

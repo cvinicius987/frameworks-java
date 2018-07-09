@@ -1,4 +1,4 @@
-package br.com.cvinicius.api;
+package br.com.cvinicius.restful.api;
 
 import static com.jayway.jsonpath.matchers.JsonPathMatchers.isJson;
 import static com.jayway.jsonpath.matchers.JsonPathMatchers.withJsonPath;
@@ -130,6 +130,6 @@ public class UserApiIntegrationTest {
 		
 	    ResponseEntity<String> response = this.restTemplate.exchange("/users/{id}", HttpMethod.DELETE, entity, String.class, params);
 		
-	    assertThat(response.getStatusCode(), is(HttpStatus.OK));
+	    assertThat(response.getStatusCode(), is(HttpStatus.NOT_FOUND));
 	}
 }
