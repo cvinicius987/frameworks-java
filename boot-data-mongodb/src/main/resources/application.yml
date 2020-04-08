@@ -1,9 +1,0 @@
-
-server:
-  port: 8080
-  
-spring:
-  data:
-    mongodb:
-      uri: mongodb://administrator:admin@localhost:27017
-      database: boot-mongodb
